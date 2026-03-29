@@ -1,0 +1,69 @@
+# =============================================================================
+# AI Spam Classifier - .gitignore
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Python / Backend
+# -----------------------------------------------------------------------------
+apps/backend/.venv/
+apps/backend/__pycache__/
+apps/backend/**/__pycache__/
+apps/backend/**/*.py[cod]
+apps/backend/**/*.pyo
+apps/backend/**/*.pyd
+apps/backend/.env
+apps/backend/.env.*
+!apps/backend/.env.example
+apps/backend/*.egg-info/
+apps/backend/dist/
+apps/backend/build/
+apps/backend/.mypy_cache/
+apps/backend/.pytest_cache/
+apps/backend/.ruff_cache/
+apps/backend/htmlcov/
+apps/backend/.coverage
+apps/backend/coverage.xml
+apps/backend/*.log
+
+# -----------------------------------------------------------------------------
+# Angular / Frontend
+# -----------------------------------------------------------------------------
+apps/frontend/node_modules/
+apps/frontend/dist/
+apps/frontend/.angular/
+apps/frontend/coverage/
+apps/frontend/*.js.map
+
+# -----------------------------------------------------------------------------
+# Environment & Secrets
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+secrets/
+
+# -----------------------------------------------------------------------------
+# OS & Editor
+# -----------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.suo
+*.user
+*.swp
+*~
+
+# -----------------------------------------------------------------------------
+# Logs & Temp
+# -----------------------------------------------------------------------------
+*.log
+logs/
+tmp/
+temp/
