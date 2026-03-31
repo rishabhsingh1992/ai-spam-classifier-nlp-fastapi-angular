@@ -42,22 +42,20 @@ AI Spam Classifier/
 ### Backend
 
 ```bash
-cd apps/backend
-
 # Create and activate virtual environment
-python -m venv .venv
-source .venv/bin/activate        # macOS/Linux
-.venv\Scripts\activate           # Windows
+python -m venv apps/backend/.venv
+source apps/backend/.venv/bin/activate    # macOS/Linux
+apps\backend\.venv\Scripts\activate   # Windows
 
 # Install dependencies
-pip install -r requirements.txt
+pip install -r apps/backend/requirements.txt
 
 # Configure environment
-cp .env.example .env
-# Edit .env with your values
+cp apps/backend/.env.example apps/backend/.env
+# Edit apps/backend/.env with your values
 
-# Start the development server
-fastapi dev main.py
+# Start the development server (from repository root)
+fastapi dev apps/backend/main.py
 ```
 
 The API will be available at `http://localhost:8000`.
@@ -93,8 +91,8 @@ Create `apps/backend/.env` based on `.env.example`:
 
 | Command | Description |
 |---------|-------------|
-| `fastapi dev main.py` | Start dev server with hot reload |
-| `fastapi run main.py` | Start production server |
+| `fastapi dev apps/backend/main.py` | Start dev server with hot reload |
+| `fastapi run apps/backend/main.py` | Start production server |
 | `pytest` | Run tests |
 
 ### Frontend
