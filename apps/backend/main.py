@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from apps.backend.schemas import ClassifyRequest, ClassifyResponse, EmailClassifyRequest
+from schemas import ClassifyRequest, ClassifyResponse, EmailClassifyRequest
 
 
 class Settings(BaseSettings):
