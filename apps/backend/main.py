@@ -1,5 +1,6 @@
 from functools import lru_cache
 
+import spacy
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -25,10 +26,26 @@ def parse_allowed_origins(value: str) -> list[str]:
     return [origin for origin in origins if origin]
 
 
+@lru_cache
+def get_nlp() -> spacy.language.Language:
+    return spacy.load("en_core_web_sm")
+
+
 def classify_text(text: str) -> ClassifyResponse:
+    # spam_tokens = {"free", "winner", "prize", "offer", "urgent", "click"}
+    # normalized = text.lower()
+    # hit_count = sum(token in normalized for token in spam_tokens)
+    #
+    # if hit_count:
+    #     confidence = min(0.55 + 0.1 * hit_count, 0.99)
+    #     return ClassifyResponse(label="spam", confidence=confidence)
+    #
+    # return ClassifyResponse(label="ham", confidence=0.86)
+
+    doc = get_nlp()(text)
     spam_tokens = {"free", "winner", "prize", "offer", "urgent", "click"}
-    normalized = text.lower()
-    hit_count = sum(token in normalized for token in spam_tokens)
+    normalized_lemmas = {token.lemma_.lower() for token in doc if token.is_alpha}
+    hit_count = len(spam_tokens.intersection(normalized_lemmas))
 
     if hit_count:
         confidence = min(0.55 + 0.1 * hit_count, 0.99)
